@@ -2,36 +2,36 @@
 """Data Visualization 
 """
 
-__all__=['feature_plot']
+__all__=['feature_category','feature_plot']
 
+import re
+from exception_files import *
 
+class feature_category:
+      def __init__(self,rep):
+          lfbrack,middle,rtbrack=rep[0],rep[1:-1],rep[-1]
+          try:
+            assert ( lfbrack=='(' ), "left"
+            assert ( rtbrack==')' ), "right"
+            if len(middle)!=0:
+               occur = 2
+               indices = [x.start() for x in re.finditer(",", middle)]
+               f = middle[0:indices[occur-1]]
+               self.f = [f.split(',')[0][1:],f.split(',')[1][:-1]]
+               self.c = middle[indices[occur-1]+1:]
+            else:
+                 raise 
+          except:
+            raise NotValidForm(rep)
+       
+       
+      def __repr__(self):
+        return lfbrack+str(self.f)+','+self.c+rtbrack
+    
 
-class category:
-    def __repr__(self):
-        return 
-        
-        
-        
-        
-            def __repr__(self):
-        return self.lrbd+str(self.lfnum)+','+str(self.rtnum)+self.upbd
-        
-    def __init__(self,rep):
-       """define the input as an interval with 6 attributes:
-       self.lfnum represents the left numerical value from the input
-       self.rtnum represents the right numerical value from the input
-       self.lrbd represents the left parenthesis from the input
-       self.upbd represents the right parenthesis from the input 
-       self.minval represents the smallest integer number in the interval
-       self.maxval represents the largest integer number in the interval
-       self.span represents the collection of intergers that are covered in the interval
-       """
-       self.rep=rep 
-       self.num=self.rep[1:-1].split(",")
-       self.lfnum=int(self.num[0])
-       self.rtnum=int(self.num[1])
-       self.lrbd=rep[0]
-       self.upbd=rep[-1]
+user_input=raw_input()
+fea_cat=feature_category(user_input)
+
     
 def feature_plot(feature,category):
     data_cat=adult_data[adult_data[category[0]]==category[1]]
