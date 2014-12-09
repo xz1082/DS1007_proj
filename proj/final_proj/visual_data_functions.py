@@ -20,7 +20,7 @@ class feature_category:
                self.f = [f.split(',')[0][1:],f.split(',')[1][:-1]]
                self.c = middle[indices[occur-1]+1:]
             else:
-                 raise 
+                 raise EmptyError('No content to analysis')
           except:
             raise NotValidForm(rep)
        

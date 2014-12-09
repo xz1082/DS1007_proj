@@ -9,6 +9,7 @@
 """
 
 from final_proj import *
+import sys
 
 
 def main():
@@ -17,12 +18,16 @@ def main():
     #cat_col=['workclass','education','martial-status','ocupation','relationship','sex','native-country','race']
     #num_col=['age','capital-gain','capital-loss','hours-per-week']
     
-    user_input=raw_input('Please enter 2 features and 1 category: ')
-    while len(user_input)!=0:
-        try:
-          fea_cat=feature_category(user_input)
-        except (NotValidForm,AssertionError) as e:
-            print e
+    try:
+       user_input=raw_input('Please enter 2 features and 1 category: ')
+       while len(user_input)!=0:
+          try:
+             fea_cat=feature_category(user_input)
+             break
+          except (NotValidForm,EmptyError,AssertionError) as e:
+             print e
+    except KeyboardInterrupt:
+        sys.exit()
     
 
   

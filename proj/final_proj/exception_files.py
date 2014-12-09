@@ -9,5 +9,7 @@ class NotValidForm(Exception):
         return "{} is not a valid input. Correct input should in the format of ([a,b],c)".format(self.rep)
 
 
-
+class EmptyError(Exception):
+     pass
+        
     
