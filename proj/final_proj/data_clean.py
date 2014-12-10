@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import os.path
 from sklearn import preprocessing 
-from exception_files import *
+from exception_files import ReadFileError
 
 __all__=['clean_data_for_visual','clean_data_for_prediction']
 

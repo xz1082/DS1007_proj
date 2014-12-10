@@ -9,9 +9,6 @@
 """
 
 from final_proj import *
-import sys
-#cat_col=['workclass','education','martial-status','ocupation','relationship','sex','native-country','race']
-#num_col=['age','capital-gain','capital-loss','hours-per-week']
 #'/Users/mengfeili/Desktop/DS1007/DS1007_proj/adult.txt'
 
 
@@ -40,6 +37,7 @@ def main():
       is_valid_input=False
       try:
         user_input=raw_input('Please enter 2 features and 1 category: ')
+        user_input="".join(user_input.split()) #remove whitespaces
         if user_input=='quit':
            print "program stopped"
            sys.exit()
@@ -53,8 +51,12 @@ def main():
       except KeyboardInterrupt:
         sys.exit()
         
-    while is_valid_input:
-          data_display(fea_cat)  
+    if is_valid_input:
+          print "\n-------------DATA DISPLAY------------------"  
+          fea_cat.data_display()
+          print "\n--------------DATA STATS SUMMARY------------"
+          fea_cat.data_summary()  
+          print "\n---------------DATA VISUALIZATION------------"
           
           break
     
@@ -63,9 +65,6 @@ def main():
     
     
     
-
-
-
 
 if __name__== "__main__" :
      main()

@@ -25,5 +25,8 @@ class NotValidCategory(Exception):
     def __str__(self):
         return "{} is not a valid category in this program".format(self.c)
 
+
 class ReadFileError(Exception):
      pass
+ 
+ 
