@@ -73,14 +73,20 @@ def plot_function(fea_cat,sub_category):
            f1=plt.figure()
            ax1=f1.add_subplot(111)
            ax1.hist(data_fea.values)  
+           plt.xlabel(elem)
            plt.ylabel(elem+' frequency')
-           plt.title('histogram for '+elem)
-           plt
-           
+           plt.title('histogram for '+elem+'with'+sub_category)  
+           f1.savefig('histogram_'+elem+'with'+sub_category)
         elif elem in cat_col:
+            ind=range(len(set(data_fea)))
             f2=plt.figure()
             ax2=f2.add_subplot(111)
-            ax2.bar(range(len(set(data_fea))),data_fea.value_counts())
+            ax2.bar(ind,data_fea.value_counts())
+            plt.xlabel(elem)
+            plt.ylabel(elem+' frequency')
+            plt.xticks(ind,data_fea.value_counts().index,rotation=90)
+            plt.title('bar plot for '+elem+'with'+sub_category)
+            f2.savefig('bar_plot_'+elem+'with'+sub_category)
                        
             
 def subcategory_for_feature_plot(fea_cat):
