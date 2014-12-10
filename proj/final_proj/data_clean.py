@@ -1,24 +1,26 @@
 import pandas as pd
 import numpy as np
+import os.path
 from sklearn import preprocessing 
+from exception_files import *
 
 __all__=['clean_data_for_visual','clean_data_for_prediction']
 
 
-def clean_data_for_visual(file_path):
-    global cleaned_data
-    head=['age','workclass','fnlwgt','education','education-num','martial-status','ocupation','relationship','race','sex','capital-gain','capital-loss','hours-per-week','native-country','y']
-    uncleaned_data=pd.read_csv(file_path,header=None,names=head)
-    
-    #remove the whitespace in categorical value
-    cat_col=['workclass','education','martial-status','ocupation','relationship','sex','native-country','race','y']
-    for col in cat_col:
-        uncleaned_data[col].map(lambda x:str(x).strip())
 
-    cleaned_data=uncleaned_data[pd.notnull(uncleaned_data['y'])]
-    
-    return cleaned_data
-    
+def clean_data_for_visual(file_path):
+    head=['age','workclass','fnlwgt','education','education-num','martial-status','ocupation','relationship','race','sex','capital-gain','capital-loss','hours-per-week','native-country','y']
+    if os.path.isfile(file_path):    
+       uncleaned_data=pd.read_csv(file_path,header=None,names=head)    
+       #remove the whitespace in categorical value
+       cat_col=['workclass','education','martial-status','ocupation','relationship','sex','native-country','race','y']
+       for col in cat_col:
+           uncleaned_data[col]=uncleaned_data[col].map(lambda x:str(x).strip())
+       cleaned_data=uncleaned_data[uncleaned_data['y']!='nan']
+       return cleaned_data
+    else:
+        raise ReadFileError('Not correct file path')
+        
     
     
 def clean_data_for_prediction(file_path):
