@@ -34,7 +34,6 @@ def main():
     
     print "\n--------DATA Visualization-------"
     while True:
-      is_valid_input=False
       try:
         user_input=raw_input('Please enter 2 features and 1 category: ')
         user_input="".join(user_input.split()) #remove whitespaces
@@ -44,23 +43,20 @@ def main():
         else:
            try:
              fea_cat=feature_category(user_input)
-             is_valid_input=input_validation(fea_cat)
-             break
+             if input_validation(fea_cat):
+                break
            except (NotValidForm,EmptyError,NotValidFeature,NotValidCategory,AssertionError) as e:
                 print e
       except KeyboardInterrupt:
         sys.exit()
         
-    if is_valid_input:
-          print "\n-------------DATA DISPLAY------------------"  
-          fea_cat.data_display()
-          print "\n--------------DATA STATS SUMMARY------------"
-          fea_cat.data_summary()  
-          print "\n---------------DATA VISUALIZATION------------"
+    print "\n-------------DATA DISPLAY------------------"  
+    fea_cat.data_display()
+    print "\n--------------DATA STATS SUMMARY------------"
+    fea_cat.data_summary()  
+    print "\n---------------DATA VISUALIZATION------------"          
+    add_subcategory_for_plot(fea_cat)
           
-          break
-    
-    #visulization from user input
 
     
     
@@ -69,19 +65,7 @@ def main():
 if __name__== "__main__" :
      main()
      
-     
-"""   
-ind=random.sample(df.index,int(math.floor(df.shape[0]*0.7)))
-tr_x=df.ix[ind].drop('y',1)
-tr_y=df.ix[ind].y
-te_x=df.ix[df.index-ind].drop('y',1)
-te_y=df.ix[df.index-ind].y
-
-
-rf=RandomForestClassifier(n_estimators=100)
-rf=rf.fit(tr_x, tr_y)
-roc_auc_score(te_y,rf.predict_proba(te_x)[:,1])
-"""    
+      
 
        
        

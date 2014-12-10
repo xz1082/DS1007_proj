@@ -2,7 +2,7 @@
 """Data Visualization 
 """
 
-__all__=['feature_category','feature_plot']
+__all__=['feature_category','input_validation','plot_function','add_subcategory_for_plot']
 
 import re
 import sys
@@ -30,7 +30,7 @@ class feature_category:
               except: 
                   raise NotValidForm(rep)
           else:
-             raise EmptyError('Not enough information')
+             raise EmptyError('Not enough information!')
        
        
       def __repr__(self):
@@ -53,7 +53,7 @@ class feature_category:
         
 def input_validation(input_be_evaluated):
     valid_fea=['age','education','ocupation','capital-gain','capital-loss','native-country']
-    valid_cat=['>=50K','<50K','Female','Male']
+    valid_cat=['y','sex']
     #validation for feature input
     for elem in input_be_evaluated.f:
         if elem not in valid_fea:
@@ -89,7 +89,7 @@ def plot_function(fea_cat,sub_category):
             f2.savefig('bar_plot_'+elem+'with'+sub_category)
                        
             
-def subcategory_for_feature_plot(fea_cat):
+def add_subcategory_for_plot(fea_cat):
     
     while True:
        if fea_cat.c=='y':
