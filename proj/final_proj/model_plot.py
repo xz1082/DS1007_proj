@@ -3,6 +3,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 from models import *
 
+
+
+__all__=['plotAUC','plotModels']
+
+
+
 def plotAUC(truth, pred, lab):
     fpr, tpr, thresholds = roc_curve(truth, pred)
     roc_auc = auc(fpr, tpr)
@@ -20,5 +26,3 @@ def plotModels():
     plotAUC(Y_test, logRegression(), 'LR' )
     plotAUC(Y_test, randomForest(), 'RF')
 
-if __name__ == '__main__':
-    plotModels()

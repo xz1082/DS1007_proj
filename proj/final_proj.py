@@ -14,12 +14,14 @@ from final_proj import *
 
 def main():
     global visual_data
+    global predict_data
     #read data
     while True:
         try:
           f_path=raw_input('Please enter the file path: ')
           if f_path!='quit':
              visual_data=clean_data_for_visual(f_path)
+             predict_data=clean_data_for_prediction(f_path)
              print "--------DATA INFORMATION----------"
              print "DATA SHAPE: ", visual_data.shape
              print "\nChoose features from: ", str(['age','education','martial-status','ocupation','capital-gain','capital-loss','hours-per-week'])
@@ -57,7 +59,7 @@ def main():
     print "\n---------------DATA VISUALIZATION------------"          
     add_subcategory_for_plot(fea_cat)
           
-
+    print "\n------------Additional Data Graph----------------"
     
     
     
