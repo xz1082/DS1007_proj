@@ -11,7 +11,7 @@ def main():
             
             age =raw_input('Please enter your age.')
             education =raw_input('Please enter your education.')
-            martial_status =raw_input('Please enter your martial status.')
+            marital_status =raw_input('Please enter your marital status.')
             ocupation =raw_input('Please enter your ocupation.')
             capital_gain =raw_input('Please enter your capital gain.')
             hours_per_week =raw_input('Please enter your working hours per week.') 
