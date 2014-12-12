@@ -5,13 +5,13 @@ def age_validation(age_input):
     We assume the age range is [18,70]''' 
     try:
         age_input =int(age_input)
+        if (age_input < 18) or (age_input>70):
+            raise out_of_range_age_exception
+        else:
+            return True
     except:
+        return False
         raise invalid_age_exception
-        
-    if (age_input < 18) or (age_input>70):
-        raise out_of_range_age_exception
-    else:
-        return True
     
 def education_validation(education_input):
     '''This function validates the input of education. The function raises exception when the input is invalid.'''      
@@ -45,13 +45,13 @@ def capital_gain_validation(capital_gain_input):
     '''
     try:
         capital_gain_input =int(capital_gain_input)
+        if (capital_gain_input < 0) or (capital_gain_input > 100000):
+            raise out_of_range_capital_gain_exception
+        else:
+            return True
     except:
+        return False
         raise invalid_capital_gain_exception
-    
-    if (capital_gain_input < 0) or (capital_gain_input > 100000):
-        raise out_of_range_capital_gain_exception
-    else:
-        return True
 
 def hours_per_week_validation(hours_per_week_input):
     '''
@@ -60,111 +60,111 @@ def hours_per_week_validation(hours_per_week_input):
     '''
     try:
         hours_per_week_input =int(hours_per_week_input)
+        if (hours_per_week_input < 0) or (hours_per_week_input > 100):
+            raise out_of_range_capital_gain_exception
+        else:
+            return True
     except:
+        return False
         raise invalid_hours_per_week_exception
-    
-    if (hours_per_week_input < 0) or (hours_per_week_input > 100):
-        raise out_of_range_capital_gain_exception
-    else:
-        return True
-    
+
     
 class parse_func:  
     '''
     this class creates a string object and has different methods for parsing the string object into data to be processed in prediction model
     '''
-    def __init__(self, string):
+    def __init__(self):
         '''
-        initiate the parse function class and create a string object
+        initiate the parse function class 
         '''
-        self.string = string
+        pass
 
-    def parse_age(self):
+    def parse_age(self, string):
         '''
         this function parses age string into integer
         '''
-        return int(self.string)
+        return int(string)
     
-    def parse_education(self):
+    def parse_education(self, string):
         '''
         this function parses education string into a numerical value, representing categorical level of education
         '''
-        if self.string == 'Doctorate':
+        if string == 'Doctorate':
             return 1
-        elif self.string == 'Masters':
+        elif string == 'Masters':
             return 2
-        elif self.string == 'Bachelors':
+        elif string == 'Bachelors':
             return 3 
-        elif self.string == 'Associate':
+        elif string == 'Associate':
             return 4
-        elif self.string == 'Prof-school':
+        elif string == 'Prof-school':
             return 5
-        elif self.string == 'Below 12th':
+        elif string == 'Below 12th':
             return 6
         else:
             raise unable_to_parse_exception()
     
-    def parse_marital_status(self):
+    def parse_marital_status(self, string):
         '''
         this function parses marital status string into a numerical value, representing categorical level of marital status
         '''
-        if self.string == 'Married':
+        if string == 'Married':
             return 1
-        elif self.string == 'Married-spouse-absent' or 'Separated' or 'Divorced':
+        elif string == 'Married-spouse-absent' or 'Separated' or 'Divorced':
             return 2
-        elif self.string == 'Never married':
+        elif string == 'Never married':
             return 3
-        elif self.string == 'Widowed':
+        elif string == 'Widowed':
             return 4
         else:
             raise unable_to_parse_exception()
 
-    def parse_ocupation(self):
+    def parse_ocupation(self, string):
         '''
         this function parses ocupation string into a numerical value, representing categorical level of ocupation
         '''
-        if self.string == 'Adm-clerical':
+        if string == 'Adm-clerical':
             return 0
-        elif self.string == 'Armed-Forces':
+        elif string == 'Armed-Forces':
             return 1
-        elif self.string == 'Craft-repair':
+        elif string == 'Craft-repair':
             return 2
-        elif self.string == 'Exec-managerial':
+        elif string == 'Exec-managerial':
             return 3
-        elif self.string == 'Farming-fishing':
+        elif string == 'Farming-fishing':
             return 4
-        elif self.string == 'Handlers-cleaners':
+        elif string == 'Handlers-cleaners':
             return 5
-        elif self.string == 'Machine-op-inspct':
+        elif string == 'Machine-op-inspct':
             return 6 
-        elif self.string == 'Other-service':
+        elif string == 'Other-service':
             return 7
-        elif self.string == 'Priv-house-serv':
+        elif string == 'Priv-house-serv':
             return 8
-        elif self.string == 'Prof-specialty':
+        elif string == 'Prof-specialty':
             return 9
-        elif self.string == 'Protective-serv':
+        elif string == 'Protective-serv':
             return 10
-        elif self.string == 'Sales':
+        elif string == 'Sales':
             return 11
-        elif self.string == 'Tech-support':
+        elif string == 'Tech-support':
             return 12
-        elif self.string == 'Transport-moving':
+        elif string == 'Transport-moving':
             return 13
         else: 
             raise unable_to_parse_exception()
     
-    def parse_capital_gain(self):
+    def parse_capital_gain(self, string):
         '''
         this function parses capital gain string into integer
         '''
-        return int(self.string)
+        return int(string)
 
-    def parse_hours_per_week(self):
+    def parse_hours_per_week(self, string):
         '''
         this function parses hours per week string into integer
         '''
-        return int(self.string)
+        return int(string)
 
 
     
