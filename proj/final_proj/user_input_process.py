@@ -110,9 +110,9 @@ class parse_func:
         '''
         if string == 'Married':
             return 1
-        elif string == 'Married-spouse-absent' or 'Separated' or 'Divorced':
+        elif string == 'Married-spouse-absent':
             return 2
-        elif string == 'Never married':
+        elif string == 'Never-married':
             return 3
         elif string == 'Widowed':
             return 4

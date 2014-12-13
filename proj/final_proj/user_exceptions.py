@@ -1,3 +1,19 @@
+class cannot_open_file_exception(Exception):
+    '''
+    Raise exception when the file path doesn't exist or cannot be opened.
+    '''
+    def __str__(self):
+        return 'Incorrect file path. The file cannot be opened.'
+    pass
+
+class invalid_input_exception(Exception):
+    '''
+    Raise exception when unable to read user's keyboard input.
+    '''
+    def __str__(self):
+        return 'The user input cannot be read.'
+    pass
+
 class invalid_age_exception(Exception):
     '''Raise exception when the input of age is not a valid integer.'''
     def __str__(self):
